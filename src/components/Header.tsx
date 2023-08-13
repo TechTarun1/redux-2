@@ -1,25 +1,13 @@
-/**
- * fetch('https://fakestoreapi.com/products/categories')
-            .then(res=>res.json())
-            .then(json=>console.log(json))
- */
+
 import { useEffect, useState } from "react";
 import { useCartContext } from "../context/cart";
 import {useSelector} from 'react-redux';
 
 const Header:React.FC<any> = ({ selectedCategory, setSelectedCategory }) => {
+
     const [data, setData] = useState([]);
-    // const { cart } = useCartContext();
     const cart = useSelector((state:any) => state.cart);
 
-    /**
-     * useEffect - everytime your component renders, the code inside
-     * useEffect is called
-     * dependency array -
-     *  i when it is empty - useEffect will be called only once
-     *  ii when we have some values - useffect will be called when the
-     * the values in dependency array changes
-     */
     useEffect(() => {
         fetch("https://fakestoreapi.com/products/categories")
             .then((res) => res.json())
@@ -36,7 +24,6 @@ const Header:React.FC<any> = ({ selectedCategory, setSelectedCategory }) => {
     }, [data, setSelectedCategory]);
 
     const value = useCartContext();
-    console.log(value);
 
     let isLoading = false;
     let loadError = null;
@@ -71,4 +58,5 @@ const Header:React.FC<any> = ({ selectedCategory, setSelectedCategory }) => {
         );
     }
 };
+
 export default Header;            

@@ -10,4 +10,4 @@ const Product = ({ title, price, image }:any) => (
     </div>
   );
   
-  export default Product;  
+export default Product;  

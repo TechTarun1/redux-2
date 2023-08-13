@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Product from "./ProductCard";
 
-const ProductList = ({ selectedCategory, setSelectedCategory }:any) => {
+const ProductList = ({ selectedCategory}:any) => {
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  
   useEffect(() => {
     setLoading(true);
     if (selectedCategory.length > 0) {
@@ -19,10 +21,12 @@ const ProductList = ({ selectedCategory, setSelectedCategory }:any) => {
   let loadError = null;
 
   if (loading) {
+
     return <div className="loading">Fetching Products ... </div>;
   } else if (loadError) {
     return <div>Please try again ... </div>;
   } else {
+
     return (
       <div className="products">
         {products.map((product) => (
